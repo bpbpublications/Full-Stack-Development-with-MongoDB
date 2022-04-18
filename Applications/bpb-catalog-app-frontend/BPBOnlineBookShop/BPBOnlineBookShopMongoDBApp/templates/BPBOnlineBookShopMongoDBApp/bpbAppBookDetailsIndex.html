@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Book Details Page - BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="book-details-body-container">
+            <div class="book-details-book-image-container"><img class="book-details-book-image"
+                    src="http://localhost/bpb-catalog-app-backend/images/{{BPBBookFromId.coverimage}}" /></div>
+            <div class="book-details-book-title">{{BPBBookFromId.title}}</div>
+            <div class="book-details-book-other-details"><b>Description</b> :
+                {{BPBBookFromId.description}}<br /><b>Price</b> : {{BPBBookFromId.price}}</div>
+            <div class="more-details-book-thumbs-up-down-container">
+                <div class="more-details-book-thumbs-up"><i class="material-icons">thumb_up</i>
+                    {% if BPBBookFromId.thumbsUPCounter %} {{BPBBookFromId.thumbsUPCounter}} {% else %} 0 {% endif %}
+                </div>
+                <div class="more-details-book-thumbs-down"><i class="material-icons">thumb_down</i>
+                    {% if BPBBookFromId.thumbsDOWNCounter %} {{BPBBookFromId.thumbsDOWNCounter}} {% else %} 0 {% endif
+                    %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "60fd3fcaaf407a0d6383cfe3"
+  },
+  "book-title": "MongoDB Complete Guide",
+  "book-author": "Manu Sharma",
+  "book-ISBN": "9789389898866",
+  "book-pages": "470",
+  "book-brief-description": "Master MongoDB - The widely used modern database in a step-by-step,  practical, and easy-to-understand approach covering all major topics"
+},{
+  "_id": {
+    "$oid": "60fd485daf407a0d6383cfe4"
+  },
+  "book-title": "Redis® Deep Dive",
+  "book-author": "Suyog Dilip Kale, Chinmay Kulkarni",
+  "book-ISBN": "9788194837763",
+  "book-pages": "228",
+  "book-brief-description": "This book begins with teaching you to set up your own Redis environment, followed by Redis data structures, their architecture, and use cases"
+},{
+  "_id": {
+    "$oid": "60fd4975af407a0d6383cfe6"
+  },
+  "book-title": "ITIL® 2011 The Story Continues",
+  "book-author": "Dr. Pratul Sharma",
+  "book-ISBN": "9789388176736",
+  "book-pages": "82",
+  "book-brief-description": "Describes the ITIL service lifecycle and standards for service design and development An explanation is given in untraditional Layman’s language, with easy to follow examples Explores issues of creating and maintaining value for clients through monitoring"
+},{
+  "_id": {
+    "$oid": "60fd49cdaf407a0d6383cfe7"
+  },
+  "book-title": "Decoding JavaScript",
+  "book-author": "Rushabh Mulraj Shah",
+  "book-ISBN": "9789390684816",
+  "book-pages": "370",
+  "book-brief-description": "Mastering advanced JavaScript to build modern next-generation web applications."
+},{
+  "_id": {
+    "$oid": "60fd4a12af407a0d6383cfe8"
+  },
+  "book-title": "Python In - Depth",
+  "book-author": "Ahidjo Ayeva, Kamon Ayeva, Aiman Saed",
+  "book-ISBN": "9789389328424",
+  "book-pages": "364",
+  "book-brief-description": "“Python In-Depth” gives you a detailed presentation of the possibilities for solving everyday problems, even complex ones using Python."
+},{
+  "_id": {
+    "$oid": "60fd4a59af407a0d6383cfe9"
+  },
+  "book-title": "Designing User Interfaces",
+  "book-author": "Dario Calonaci",
+  "book-ISBN": "9789389898743",
+  "book-pages": "230",
+  "book-brief-description": "Think about UIs using design thinking principles from an award-winning graphic designer"
+},{
+  "_id": {
+    "$oid": "60fd4ab8af407a0d6383cfea"
+  },
+  "book-title": "Advanced Web Development with React",
+  "book-author": "Mehul Mohan",
+  "book-ISBN": "9789389423594",
+  "book-pages": "204",
+  "book-brief-description": "The Book Starts By Introducing The Reader To React, What It Is And Why You Need A Library Like React To Work With Medium To Large Scale Applications."
+}]

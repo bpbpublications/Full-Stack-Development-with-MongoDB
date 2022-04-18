@@ -1,0 +1,110 @@
+  .main-container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .header-container {
+    background: #ffffff;
+    height: 200px;
+  }
+
+  .body-container {
+    width: 1200px;
+    background: #fafafa;
+    margin: 20px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 300px;
+    height: 250px;
+    border: 1px;
+    border-style: solid;
+    border-color: blueviolet;
+    margin: 15px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .book-image {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+
+  .book-title {
+    margin-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .more-details-button {
+    margin-top: 20px;
+  }
+
+  .more-details-button>a {
+    background-color: darkorchid;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  .more-details-button>a:hover {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+
+  /* More Details Page CSS Starts Here */
+
+  .book-details-body-container {
+    text-align: center;
+  }
+
+  .book-details-book-image {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-other-details {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  /* Thumbs Up and Thumbs Down */
+
+  .more-details-book-thumbs-up-down-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .more-details-book-thumbs-up, .more-details-book-thumbs-down {
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+  }

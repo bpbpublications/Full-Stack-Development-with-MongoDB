@@ -1,0 +1,705 @@
+####################################################################################
+App JS File
+####################################################################################
+
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native'; // Imported the Image Component
+import { useEffect, useState } from 'react'; // import the useEffect and useState React.js Hooks
+
+####################################################################################
+App JS File (Updated and Appended Code)
+####################################################################################
+
+export default function App() {
+
+  // API Fetch Part - Networking
+  
+  // Style Sheets
+  
+  // Header Section
+  
+  // Books List Section
+  
+  // Return Part of the App
+  
+  }
+
+
+####################################################################################
+App JS File (Updated and Appended Code)
+####################################################################################
+
+// API Fetch Part - Networking
+const [isLoading, setLoading] = useState(true);
+const [data, setData] = useState([]); // setData Function and useState Hook is helpful in using the React State of the function Components
+
+useEffect(() => {
+  fetch('http://localhost:3000/getAllBPBBooks') // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+    .then((response) => response.json()) // Response from the API Server
+    .then((json) => setData(json)) // Using setData Function response is sent back and then it is stored in "data"
+    .catch((error) => console.error(error)) // Error if any is caught and logged
+    .finally(() => setLoading(false)); // Finally the task is done
+}, []);
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - StyleSheet Section
+####################################################################################
+
+// Style Sheets
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start', /* Flex Start */
+    maxWidth:300,
+    marginLeft:'auto',
+    marginRight:'auto',
+  },
+  logo: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width:250,
+    height: 150,
+    marginTop:20,
+    marginBottom:20
+  },
+  heading: {
+    fontSize:15, 
+    fontWeight:'bold'
+  },
+  booklistview: {
+    borderWidth:2,
+    borderColor:'blue',
+    marginTop:20
+  }
+});
+
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Header Section
+####################################################################################
+
+// Header Section
+const appHeaderSection = (
+  <View>
+  <Image source={require('./images/bpb-logo.png')} style={styles.logo} /> 
+  <Text style={styles.heading} >Welcome to BPB Online Mobile App</Text>
+  <StatusBar style="auto" />
+  </View>
+);
+
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Sections
+####################################################################################
+
+// Header Section
+const appHeaderSection = (
+  <View>
+  <Image source={require('./images/bpb-logo.png')} style={styles.logo} /> 
+  <Text style={styles.heading} >Welcome to BPB Online Mobile App</Text>
+  <StatusBar style="auto" />
+  </View>
+);
+
+// Books List Section
+// We are using the "data" which was fetched using the fetch API and then we are iterating the same with the help of "map" to present the list of books 
+const appBookdListSection = (
+  <View style={styles.booklistview}>
+    <ul>
+    {data.map((book, index) =>
+        <Text key={book._id}>
+        <li style={{paddingRight:'10px'}}><b>{book.title}</b> <i>[By: {book.authorname}]</i></li> 
+        </Text>
+    )}
+    </ul>
+  </View>
+);
+
+
+####################################################################################
+App JS File (Updated and Appended Code) -= Return Part of the App
+####################################################################################
+
+  return (
+    <View style={styles.container}>
+    {appHeaderSection}
+    {appBookdListSection}
+    </View>
+  );
+  
+} // Default App Function Ends Here  
+
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue
+####################################################################################
+
+var cors = require('cors') // CORS Module
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue
+####################################################################################
+
+const express = require('express'); // Express Module
+var cors = require('cors') // CORS Module
+const app = express();
+const port = 3000; // Port, You can Change this Port to anything you would like For example 8000, For this Book, we will Keep this as 3000 for Node.js > Express.js Based API Examples
+
+const MongoDBClient = require('mongodb').MongoClient; // MongoDB Driver
+const MongoDBObjectId = require("mongodb").ObjectId; // Create a new ObjectID instance, used for Converting String to MongoDB ObjectID Type and opposite
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue
+####################################################################################
+
+// API Endpoint "getAllBPBBooks" using GET Request
+app.get("/getAllBPBBooks", cors(), (request, response) => {
+
+We have added cors() function in the get based method of our Express.js Route (getAllBPBBooks):
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.send('Welcome to BPB Publications RESTful API') // This is the Default API Message
+});
+
+// API Endpoint "getAllBPBBooks" using GET Request
+// Now CORS Enabled
+app.get("/getAllBPBBooks", cors(), (request, response) => {
+  collection.find().toArray((error, result) => { // Fetching the Collection Data using "toArray"
+      if(error) { // If any Error
+          return response.status(500).send(error);
+      }else{
+          response.send(result); // Send Response Back to the Client
+      }
+  });
+});
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated CSS Section
+####################################################################################
+
+
+// Style Sheets
+  const styles = StyleSheet.create({
+    bookContainer: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft:'auto',
+      marginRight:'auto',
+      borderWidth:2,
+      borderColor:'darkblue',
+      padding:10
+    },
+    logo: {
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width:150,
+      height: 100,
+      marginTop:5,
+      marginBottom:5,
+      marginLeft:'auto',
+      marginRight:'auto'
+    },
+    heading: {
+      fontSize:17, 
+      fontWeight:'bold',
+      marginTop:5,
+      marginBottom:5,
+      marginLeft:'auto',
+      marginRight:'auto',
+      marginBottom:20
+    },
+    appBookdListSection:{
+      marginBottom:400
+    },
+    bookCover: {
+      width:280,
+      height: 350,
+      marginTop:20,
+      marginBottom:20
+    },
+    bookListTitle: {
+      fontSize:25, 
+      fontWeight:'bold',
+      maxWidth:280,
+      marginLeft:'auto',
+      marginRight:'auto'
+    },
+    bookListAuthor: {
+      fontSize:20, 
+      fontWeight:'bold',
+      fontStyle:'italic',
+      maxWidth:280,
+      marginLeft:'auto',
+      marginRight:'auto'
+    },
+
+    /* Item Separator CSS */
+
+    itemSeparator:{
+      height: 0.5, 
+      width: '100%', 
+      backgroundColor:'darkblue',
+      borderWidth:2,
+      borderBottomColor:'darkmagenta',
+      marginTop:20,
+      marginBottom:20,
+      maxWidth:280,
+      marginLeft:'auto',
+      marginRight:'auto'
+    }
+  });
+
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Top Section for Import Components
+####################################################################################
+
+
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image } from 'react-native'; // Imported the Image Component
+//import React from 'react';
+import React, { useEffect, useState } from 'react'; // Import the useEffect and useState React.js Hooks
+import { SafeAreaView, FlatList } from 'react-native'; // Import React Native FlatList and SafeAreaView
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Header Section
+####################################################################################
+
+// Header Section
+const appHeaderSection = (
+  <View>
+  <Image source={{uri:'http://localhost/bpb-catalog-app-backend/images/bpb-logo.png'}} style={styles.logo} /> 
+  <Text style={styles.heading} >Welcome to BPB Online Mobile App</Text>
+  <StatusBar style="auto" />
+  </View>
+);
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Book List Section
+####################################################################################
+
+// Books List Section
+// We are using the "data" which was fetched using the fetch API and then we are using the React Native Flatlist Component to render the Book-related data.
+
+const ItemView = ({item}) => {
+  return (
+    // Single Comes here which will be repetitive for the FlatListItems
+    <View style={styles.bookContainer}>
+      <Text style={styles.bookListTitle}>
+        {item.title}
+      </Text>
+      <Text style={styles.bookListAuthor}>
+        {item.authorname}
+      </Text>
+      <View><Image source={{uri:'http://localhost/bpb-catalog-app-backend/images/'+item.coverimage}} style={styles.bookCover}/>
+      </View>
+    </View>
+  );
+};
+
+const ItemSeparatorView = () => {
+  return (
+    //Item Separator
+    <View style={styles.itemSeparator} />
+  );
+};
+
+const appBookdListSection = (
+    <View style={styles.appBookdListSection}>
+      <FlatList
+        data={data}
+        //data defined in constructor
+        ItemSeparatorComponent={ItemSeparatorView}
+        //Item Separator View
+        renderItem={ItemView}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </View>
+);
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Import Font Awesome
+####################################################################################
+
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image } from 'react-native'; // Imported the Image Component
+//import React from 'react';
+import React, { useEffect, useState } from 'react'; // Import the useEffect and useState React.js Hooks
+import { SafeAreaView, FlatList } from 'react-native'; // Import React Native FlatList and SafeAreaView
+import { FontAwesome } from '@expo/vector-icons'; // Import Font Awesome
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated CSS Section
+####################################################################################
+
+ /* Item Separator CSS */
+
+    itemSeparator:{
+      height: 0.5, 
+      width: '100%', 
+      backgroundColor:'darkblue',
+      borderWidth:2,
+      borderBottomColor:'darkmagenta',
+      marginTop:20,
+      marginBottom:20,
+      maxWidth:280,
+      marginLeft:'auto',
+      marginRight:'auto'
+    },
+    
+    /* New CSS for "Thumbs Up" and "Thumbs Down" */
+
+    thumbsUP: {
+      width:200,
+      marginBottom:5,
+    },
+    thumbsDOWN: {
+      width:200,
+      marginTop:5,
+      marginBottom:5
+    }
+
+  });
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Thumbs Up and Thumbs Down Section
+####################################################################################
+
+// Header Section
+const appHeaderSection = (
+  <View>
+  <Image source={{uri:'http://localhost/bpb-catalog-app-backend/images/bpb-logo.png'}} style={styles.logo} /> 
+  <Text style={styles.heading} >Welcome to BPB Online Mobile App</Text>
+  <StatusBar style="auto" />
+  </View>
+);
+
+// Thumbs Up Button
+const thumbsUP = (
+  <FontAwesome.Button name="thumbs-up" onPress={() => doThumbsUP()}>
+    Thumbs Up
+  </FontAwesome.Button>
+);
+
+// Thumbs Down Button
+const thumbsDOWN = (
+  <FontAwesome.Button name="thumbs-down" onPress={() => doThumbsDOWN()}>
+    Thumbs Down
+  </FontAwesome.Button>
+);
+
+const doThumbsUP = () => {
+  console.log('Thumbs Up Pressed');
+}
+
+const doThumbsDOWN = () => {
+  console.log('Thumbs Down Pressed');
+}
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Book List Section
+####################################################################################
+
+// Books List Section
+// We are using the "data" which was fetched using the fetch API and then we are using the React Native Flatlist Component to render the Book-related data.
+
+const ItemView = ({item}) => {
+  return (
+    // Single Comes here which will be repetitive for the FlatListItems
+    <View style={styles.bookContainer}>
+      <Text style={styles.bookListTitle}>
+        {item.title}
+      </Text>
+      <Text style={styles.bookListAuthor}>
+        {item.authorname}
+      </Text>
+      <View><Image source={{uri:'http://localhost/bpb-catalog-app-backend/images/'+item.coverimage}} style={styles.bookCover}/>
+      </View>
+      <View style={styles.thumbsUP}>
+      {thumbsUP}
+      </View>
+      <View style={styles.thumbsDOWN}>
+      {thumbsDOWN}
+      </View>
+    </View>
+  );
+};
+
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Thums Up Route
+####################################################################################
+
+// API Endpoint "thumbsUPForBPBBook" using PUT Request
+app.put("/thumbsUPForBPBBook/:bookid", cors(), (request, response) => {
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Thums Up Route
+####################################################################################
+
+// API Endpoint "thumbsUPForBPBBook" using PUT Request
+app.put("/thumbsUPForBPBBook/:bookid", cors(), (request, response) => {
+
+  collection.findOne({ "_id": new MongoDBObjectId(request.params.bookid)},(error, result) => { // We are Fetching Book Record from our Collection
+  if(error) { // If any Error
+      return response.status(500).send(error);
+  }else{
+
+    if(isNaN(result.thumbsUPCounter)){ // If there is no existing value for "thumbsUPCounter" in the MongoDB Document
+    var thumbsUPCounterValue = 1; // Just assign a new Value to 1
+    }else{
+      var thumbsUPCounterValue = result.thumbsUPCounter + 1; // We are taking the existing "thumbsUPCounter" value from our Database and then Incrementing the Thumbs UP Counter value "thumbsUPCounterValue" to 1
+    }   
+    collection.updateOne({ "_id": new MongoDBObjectId(request.params.bookid)}, { $set: {thumbsUPCounter:thumbsUPCounterValue} }, (error, result) => { // We are using MongoDB updateOne() Method to Update the incremented "thumbsUPCounter" value back to the database
+        if(error) { // If any Error
+            return response.status(500).send(error);
+        }else{
+            response.send(result); // Send Response Back to the Client
+        }
+      });
+
+  }
+
+  });
+});
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Thums Down Route
+####################################################################################
+
+// API Endpoint "thumbsDOWNForBPBBook" using PUT Request
+app.put("/thumbsDOWNForBPBBook/:bookid", cors(), (request, response) => {
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Thums Down Route
+####################################################################################
+
+// API Endpoint "thumbsDOWNForBPBBook" using PUT Request
+app.put("/thumbsDOWNForBPBBook/:bookid", cors(), (request, response) => {
+
+  collection.findOne({ "_id": new MongoDBObjectId(request.params.bookid)},(error, result) => { // We are Fetching Book Record from our Collection
+  if(error) { // If any Error
+      return response.status(500).send(error);
+  }else{
+
+    if(isNaN(result.thumbsDOWNCounter)){ // If there is no existing value for "thumbsDOWNCounter" in the MongoDB Document
+    var thumbsDOWNCounterValue = 1; // Just assign a new Value to 1
+    }else{
+      var thumbsDOWNCounterValue = result.thumbsDOWNCounter + 1; // We are taking the existing "thumbsDOWNCounter" value from our Database and then Incrementing the Thumbs UP Counter value "thumbsDOWNCounterValue" to 1
+    }   
+    collection.updateOne({ "_id": new MongoDBObjectId(request.params.bookid)}, { $set: {thumbsDOWNCounter:thumbsDOWNCounterValue} }, (error, result) => { // We are using MongoDB updateOne() Method to Update the incremented "thumbsDOWNCounter" value back to the database
+        if(error) { // If any Error
+            return response.status(500).send(error);
+        }else{
+            response.send(result); // Send Response Back to the Client
+        }
+      });
+
+  }
+
+  });
+});
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Fix CORS Issue for Whole App
+####################################################################################
+
+app.use(cors()) // Enable Whole App for CORS
+
+
+####################################################################################
+Node.js and Express API App - Index JS File (Updated and Appended Code) 
+Resolve CORS Issue - Fix CORS Issue for Whole App
+####################################################################################
+
+const express = require('express'); // Express Module
+var cors = require('cors') // CORS Module
+const app = express();
+const port = 3000; // Port, You can Change this Port to anything you would like For example 8000, For this Book, we will Keep this as 3000 for Node.js > Express.js Based API Examples
+
+const MongoDBClient = require('mongodb').MongoClient; // MongoDB Driver
+const MongoDBObjectId = require("mongodb").ObjectId; // Create a new ObjectID instance, used for Converting String to MongoDB ObjectID Type and opposite
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cors()) // Enable Whole App for CORS
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Various Sections
+####################################################################################
+
+// Thumbs Up Button
+const thumbsUP = (id) => {
+  return (
+  <FontAwesome.Button name="thumbs-up" onPress={() => doThumbsUP(id)}>
+    Thumbs Up
+  </FontAwesome.Button>
+  )
+};
+
+// Thumbs Down Button
+const thumbsDOWN = (id) => {
+  return (
+  <FontAwesome.Button name="thumbs-down" onPress={() => doThumbsDOWN(id)}>
+    Thumbs Down
+  </FontAwesome.Button>
+  )
+};
+
+const doThumbsUP = (id) => {
+  console.log('Thumbs Up Pressed');
+  console.log(id);
+  fetch('http://localhost:3000/thumbsUPForBPBBook/'+id, {
+    method: 'PUT'
+  }) // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+}
+
+const doThumbsDOWN = (id) => {
+  console.log('Thumbs Down Pressed');
+  console.log(id);
+  fetch('http://localhost:3000/thumbsDOWNForBPBBook/'+id, {
+    method: 'PUT'
+  }) // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+}
+
+// Books List Section
+// We are using the "data" which was fetched using the fetch API and then we are using the React Native Flatlist Component to render the Book-related data.
+
+const ItemView = ({item}) => {
+  return (
+    // Single Comes here which will be repetitive for the FlatListItems
+    <View style={styles.bookContainer}>
+      <Text style={styles.bookListTitle}>
+        {item.title}
+      </Text>
+      <Text style={styles.bookListAuthor}>
+        {item.authorname}
+      </Text>
+      <View><Image source={{uri:'http://localhost/bpb-catalog-app-backend/images/'+item.coverimage}} style={styles.bookCover}/>
+      </View>
+      <View style={styles.thumbsUP}>
+      {thumbsUP(item._id)}
+      </View>
+      <View style={styles.thumbsDOWN}>
+      {thumbsDOWN(item._id)}
+      </View>
+    </View>
+  );
+};
+
+
+####################################################################################
+App JS File (Updated and Appended Code) - Updated Various Sections
+Changing Host to IP
+####################################################################################
+
+// API Fetch Part - Networking
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]); // setData Function and useState Hook is helpful in using the React State of the function Components
+
+  useEffect(() => {
+    fetch('http://192.168.1.10:3000/getAllBPBBooks') // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+      .then((response) => response.json()) // Response from the API Server
+      .then((json) => setData(json)) // Using setData Function response is sent back and then it is stored in "data"
+      .catch((error) => console.error(error)) // Error if any is caught and logged
+      .finally(() => setLoading(false)); // Finally the task is done
+  }, []);
+  
+
+
+// Header Section
+const appHeaderSection = (
+  <View>
+  <Image source={{uri:'http://192.168.1.10/bpb-catalog-app-backend/images/bpb-logo.png'}} style={styles.logo} /> 
+  <Text style={styles.heading} >Welcome to BPB Online Mobile App</Text>
+  <StatusBar style="auto" />
+  </View>
+);
+
+
+const doThumbsUP = (id) => {
+  console.log('Thumbs Up Pressed');
+  console.log(id);
+  fetch('http://192.168.1.10:3000/thumbsUPForBPBBook/'+id, {
+    method: 'PUT'
+  }) // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+}
+
+const doThumbsDOWN = (id) => {
+  console.log('Thumbs Down Pressed');
+  console.log(id);
+  fetch('http://192.168.1.10:3000/thumbsDOWNForBPBBook/'+id, {
+    method: 'PUT'
+  }) // Our API Call using Fetch API "API Developed in Node.js and Express.js Chapter of this Book"
+}
+
+// Books List Section
+// We are using the "data" which was fetched using the fetch API and then we are using the React Native Flatlist Component to render the Book-related data.
+
+const ItemView = ({item}) => {
+  return (
+    // Single Comes here which will be repetitive for the FlatListItems
+    <View style={styles.bookContainer}>
+      <Text style={styles.bookListTitle}>
+        {item.title}
+      </Text>
+      <Text style={styles.bookListAuthor}>
+        {item.authorname}
+      </Text>
+      <View><Image source={{uri:'http://192.168.1.10/bpb-catalog-app-backend/images/'+item.coverimage}} style={styles.bookCover}/>
+      </View>
+      <View style={styles.thumbsUP}>
+      {thumbsUP(item._id)}
+      </View>
+      <View style={styles.thumbsDOWN}>
+      {thumbsDOWN(item._id)}
+      </View>
+    </View>
+  );
+};
+
+
+###################################################################################

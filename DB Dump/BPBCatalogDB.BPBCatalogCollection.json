@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "61507b3289040000f00016d4"
+  },
+  "title": "MongoDB Complete Guide",
+  "authorname": "Manu Sharma",
+  "isbnnumber": "9789389898866",
+  "publicationyear": "2021",
+  "price": "919",
+  "description": "MongoDB Complete Guide book starts with the basics of MongoDB, what exactly is MongoDB, and how to use it practically. You will understand how MongoDB is different from the traditional RDBMS.\r\n\r\nTopics such as installation and configuration of the MongoDB server, MongoDB commands, MongoDB Shell methods, and data types in MongoDB are covered in detail.\r\n\r\nYou will practice how to perform MongoDB CRUD operations, indexing, MongoDB query selectors, projection in MongoDB and projection operators as well as aggregation in a very detailed and step-by-step manner. You learn how to work with MongoDB Compass and some of the advanced MongoDB topics like managing and administering MongoDB, managing the MongoDB process, monitoring and diagnosing MongoDB, backup and restore, MongoDB security, replication and sharding.",
+  "coverimage": "61507b3289040000f00016d4.jpg",
+  "thumbsUPCounter": 4
+},{
+  "_id": {
+    "$oid": "61507c3689040000f00016d5"
+  },
+  "title": "Redis® Deep Dive",
+  "authorname": "Suyog Dilip Kale, Chinmay Kulkarni",
+  "isbnnumber": "9788194837763",
+  "publicationyear": "2021",
+  "price": "849",
+  "description": "This book begins with teaching you to set up your own Redis environment, followed by Redis data structures, their architecture, and use cases. You get to learn the details about Redis Modules such as RediSearch, RedisJSON, RedisTimeSeries, RedisAI, and RedisGraph with specific business use-case examples. This book makes you a Redis Expert by getting you hands-on with best practices on Redis and some tricks to scale Redis activities.",
+  "coverimage": "61507c3689040000f00016d5.jpg",
+  "thumbsUPCounter": 2
+},{
+  "_id": {
+    "$oid": "61507cb089040000f00016d6"
+  },
+  "title": "Basics of Python Programming",
+  "authorname": "Dr. Pratiyush Guleria",
+  "isbnnumber": "9789388511803",
+  "publicationyear": "2020",
+  "price": "157",
+  "description": "Book will come as a relief to the students wishing to go through a comprehensive work explaining the programming concepts of Python. Examples are given with proper description, offering a variety of practical examples and conceptual problems along with their systematically worked out solutions. It also covers all the concepts which are helpful for the students and beginners to learn the basics of Python programming.",
+  "coverimage": "61507cb089040000f00016d6.jpg"
+},{
+  "_id": {
+    "$oid": "61507d0389040000f00016d7"
+  },
+  "title": "Designing Microservices using Django",
+  "authorname": "Shayank Jain",
+  "isbnnumber": "9789389328790",
+  "publicationyear": "2020",
+  "price": "799",
+  "description": "Microservices architectures solve the multiple problems of software architecture. Django is a full-stack development framework, written in python.\r\n\r\nThis book includes everything necessary for web application development; from the user views to the information storage: model, persistence, relationships, controllers, forms, validations, rest API and a very useful back office. Furthermore, the book will show how to build production-ready microservices. It will help you create restful APIs and get familiar with Redis and Celery. Towards the end, the book will show how to secure these services and deploy these microservices using Django. Lastly, it will show how to scale our services.",
+  "coverimage": "61507d0389040000f00016d7.jpg"
+},{
+  "_id": {
+    "$oid": "61507d6789040000f00016d8"
+  },
+  "title": "JavaScript for Gurus",
+  "authorname": "Ockert J. du Preez",
+  "isbnnumber": "9789389423655",
+  "publicationyear": "2020",
+  "price": "599",
+  "description": "From Start To Finish, This Book Will Cover All The Intricacies Of The Javascript Language! You Will Get An Overview Of All The Statements, Functions, And Operators. Then You Will Learn The Fun Stuff Which Includes: Classes, Prototypes, Promises, And Generators. You Will Learn About Arrays And How To Make Your Scripts Achieve Logic In Your Scripts. Lastly, You Will Learn How To Combine Javascript With Other Languages.",
+  "coverimage": "61507d6789040000f00016d8.jpg"
+},{
+  "_id": {
+    "$oid": "61507dd489040000f00016d9"
+  },
+  "title": "Kotlin In-depth [Vol-II]",
+  "authorname": "Aleksei Sedunov",
+  "isbnnumber": "9789389423228",
+  "publicationyear": "2020",
+  "price": "679",
+  "description": "The purpose of this book is to guide a reader through the capabilities of Kotlin language and give examples of how to use it for the development of various applications, be it desktop, mobile or Web. Although our primary focus is on JVM and Android, the knowledge we’re sharing here, to various extents, applies to other Kotlin-supported platforms such as JavaScript, native and even multi-platform applications.\r\nThe book starts with an introduction to the language and its ecosystem, which will give you an understanding of the key ideas behind the Kotlin design, introduce you to the Kotlin tooling and present you the basic language syntax and constructs. In the next chapters, we get to know the multi-paradigm nature of Kotlin which allows us to create powerful abstractions by combining various aspects of functional and object-oriented programming. We’ll talk about using common Kotlin APIs, such as the standard library, reflection, and coroutine-based concurrency as well as the means for creating your own flexible APIs based on domain-specific languages. In the concluding chapters, we give examples of using Kotlin for more specialized tasks, such as testing, building Android applications, Web development and creating microservices.",
+  "coverimage": "61507dd489040000f00016d9.jpg"
+},{
+  "_id": {
+    "$oid": "61507e4789040000f00016da"
+  },
+  "title": "Biomedical Sensors Data Acquisition with LabVIEW",
+  "authorname": "Anshuman Prakash, Dr. Lovi Raj Gupta ,Dr. Rajesh Singh, Dr. Anita Gehlot, Rydhm Beri",
+  "isbnnumber": "9789389845990",
+  "publicationyear": "2020",
+  "price": "319",
+  "description": "Biomedical sensor data acquisition with LabVIEW provides a platform for engineering students to get acquainted with Arduino and LabVIEW programming. Arduino based projects would help to improve the standards of patient care and monitoring in hospitals and the standard of living in cities by implementing a variety of innovative ideas more directly. The goal of this book is to explore and illustrate the programming and interfacing of Arduino with biomedical sensors, communication modules, and LabVIEW GUI.\r\n\r\nThe book begins with essential knowledge and gradually progresses towards the advanced level of comprehension. It starts with a Biomedical sensor-based project with a working model of LabVIEW GUI. It also gives a detailed overview of programming with Arduino IDE and LabVIEW. It covers Interface for Arduino (LIFA), which is a unique contribution that aids in the understanding of embedded systems. This book for high-level students who need application-based knowledge for developing some real-time patient monitoring systems using Arduino and LabVIEW.\r\n\r\nBy the end of the book, you will understand, data acquisition for Biomedical sensors with LabVIEW GUI.",
+  "coverimage": "61507e4789040000f00016da.jpg"
+},{
+  "_id": {
+    "$oid": "61507e9e89040000f00016db"
+  },
+  "title": "Learning Salesforce Development with Apex",
+  "authorname": "Paul Battisson",
+  "isbnnumber": "9789389898187",
+  "publicationyear": "2020",
+  "price": "719",
+  "description": "Learn to harness the power of the Apex language to build Salesforce applications\r\n\r\nThis book covers the fundamentals of the Salesforce Apex programming language used by developers to build powerful applications in the cloud.\r\nIn this book, you will learn how to work with the Apex language to build scalable applications that can interact with and update data from your users. We cover the language from the ground up, introducing programming concepts such as variables and control statements alongside clear and concise examples to help you understand the key concepts and features. Platform-specific features such as Apex triggers, SOQL and SOSL are covered in detail to help ensure you deliver robust and scalable solutions. Nuances and best practices for development are discussed along with how to effectively test your code to ensure that you can deploy it to users with confidence. Object-oriented programming in Apex is also covered in-depth to ensure that you can develop dynamic solutions and build for the future. The book also discusses and shows developers how to integrate with third-party solutions using REST APIs in Apex.\r\n\r\nBy the end of the book, the reader will know how to start developing applications using Apex with confidence.",
+  "coverimage": "61507e9e89040000f00016db.jpg"
+},{
+  "_id": {
+    "$oid": "615974498124895ebe4bd836"
+  },
+  "title": "Practical Robotics in C++",
+  "authorname": "Lloyd Brombach",
+  "isbnnumber": "9789389423464",
+  "publicationyear": "2021",
+  "price": "1040",
+  "description": "Practical Robotics in C++ teaches the complete spectrum of Robotics, right from the setting up a computer for a robot controller to putting power to the wheel motors. The book brings you the workshop knowledge of the electronics, hardware, and software for building a mobile robot platform.You will learn how to use sensors to detect obstacles, how to train your robot to build itself a map and plan an obstacle-avoiding path, and how to structure your code for modularity and interchangeability with other robot projects. Throughout the book, you can experience the demonstrations of  complete coding of robotics with the use of simple and clear C++ programming.In addition, you will explore how to leverage the Raspberry Pi GPIO hardware interface pins and existing libraries to make an incredibly capable machine on the most affordable computer platform ever.",
+  "coverimage": "no-cover.jpg",
+  "thumbsUPCounter": 8
+},{
+  "_id": {
+    "$oid": "61597aceeb9cdbb91460f2bb"
+  },
+  "title": "Dummy Test Book",
+  "authorname": "Dummy Test Book Author",
+  "isbnnumber": "00000000000000000",
+  "publicationyear": "2021",
+  "price": "000",
+  "description": "This is a Dummy Test Book for Testing Purpouse",
+  "thumbsDOWNCounter": 5,
+  "coverimage": "no-cover.jpg"
+}]

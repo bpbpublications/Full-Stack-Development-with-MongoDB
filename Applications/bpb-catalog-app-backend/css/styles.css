@@ -1,0 +1,190 @@
+/* Top Section */
+
+.top-section{
+  display: flex;
+  flex-direction: row;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.title-text{
+  padding-left:50px;
+}
+
+/* Content Section */
+
+.content{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+/* Dashboard */
+
+.addnewbook-container{
+  text-align:right;
+}
+
+.addnewbook-btn{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color:#002b80;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor:pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add New Book */
+
+.addnewbook-form-container{
+  max-width:700px;
+}
+
+.addnewbook-form-container input[type=text] {
+  width: 100%;
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid #ff99ff;
+  border-radius: none;
+  box-sizing: border-box;
+}
+
+.addnewbook-form-container input[type=text]:hover {
+  border: 1px solid #ff99ff;
+  border-radius: none;
+}
+
+.addnewbook-form-container input[type=submit] {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  background-color: #4d004d;
+  color: white;
+  border: none;
+  border-radius: none;
+  cursor: pointer;
+}
+
+.addnewbook-form-container input[type=submit]:hover {
+  background-color: #73264d;
+  cursor: pointer;
+}
+
+.addnewbook-form-container .form-content-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.addnewbook-form-container .form-content-container .form-content-left{
+  width:70%;
+  margin-right:10px;
+}
+
+.addnewbook-form-container .form-content-container .form-content-right{
+  width:30%;
+  margin-left:10px;
+}
+
+/* Add New Book Additional Styles */
+
+.gotodashboard-container{
+  text-align:right;
+}
+
+.gotodashboard-btn{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color:#002b80;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor:pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.form-submitted{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color:#00802b;
+  border: #004d1a;
+  color: white;
+}
+
+.addnewbookagain-container{
+  margin-top:20px;
+}
+
+.addnewbookagain-btn{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color:#4d004d;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor:pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.addnewbookagain-btn:hover{
+  background-color: #73264d;
+  cursor: pointer;
+}
+
+.addnewbook-form-container textarea {
+  width: 100%;
+  height:150px;
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid #ff99ff;
+  border-radius: none;
+  box-sizing: border-box;
+}
+
+
+/* Dashboard - List Books */
+
+.row-container{
+  max-width:1000px;
+  margin-bottom:40px;
+}
+
+.col-container{
+  display: flex;
+}
+
+.col-container.headings{
+font-size:20px;
+font-weight:bold;
+}
+
+.row{
+  margin-top:5px;
+  margin-bottom:5px;
+  border-bottom: 1px solid #ff99ff;
+}
+
+.col{
+  width:300px;
+}
+
+.delete-book-link{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color:#4d004d;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor:pointer;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,0 +1,776 @@
+##################################################################################
+bpbAppIndex.html
+##################################################################################
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+</head>
+
+<body>
+    <h1>BPB Online Bookshop<h1>
+</body>
+
+</html>
+
+##################################################################################
+views.py (Updated)
+##################################################################################
+
+from django.shortcuts import render
+
+# Create your views here.
+
+def bpbAppIndex(request):
+    return render(request, 'BPBOnlineBookShopMongoDBApp/bpbAppIndex.html')
+
+
+##################################################################################
+urls.py
+##################################################################################
+
+from django.urls import path
+
+urlpatterns = [
+    path('',),
+]
+
+
+##################################################################################
+urls.py - App Directory
+##################################################################################
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.bpbAppIndex, name='BPB-Book-Shop-Home-Page'),
+]
+
+
+##################################################################################
+urls.py - Project Directory
+##################################################################################
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('BPBOnlineBookShopMongoDBApp.urls'))
+]
+
+
+##################################################################################
+apps.py - Name of the Class defined in the apps.py file Located in the App’s Folder
+##################################################################################
+
+“'BPBOnlineBookShopMongoDBApp.apps.BpbonlinebookshopmongodbappConfig”',
+
+##################################################################################
+settings.py
+##################################################################################
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'BPBOnlineBookShopMongoDBApp.apps.BpbonlinebookshopmongodbappConfig',
+]
+
+
+##################################################################################
+settings.py
+##################################################################################
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DB_CONNECTION_STRING = 'mongodb://localhost:27017/'
+
+
+##################################################################################
+views.py - Updated Code
+##################################################################################
+
+from django.shortcuts import render
+import pymongo # Import PyMongo
+from django.conf import settings # Import the Settings (We will use DB_CONNECTION_STRING from the settings file)
+
+# Create your views here.
+
+def bpbAppIndex(request):
+
+    # Connect to MongoDB Database from the Connection String Defined in Django Project "settings.py" 
+    PyMongoclient = pymongo.MongoClient(settings.DB_CONNECTION_STRING)
+
+    # Define the Database
+    dbname = PyMongoclient['BPBCatalogDB']
+
+    # Use Collection
+    collection_name = dbname["BPBCatalogCollection"]
+
+    # Fetch All the Documents from Collection 
+    BPBBooks = collection_name.find({})
+
+    # Pass the Data Object to the Template Output by passing as a parameter using "Key" : "Value" Style
+    return render(request, 'BPBOnlineBookShopMongoDBApp/bpbAppIndex.html', {'BPBBooks' : BPBBooks})
+
+
+##################################################################################
+bpbAppIndex.html
+##################################################################################
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+</head>
+
+<body>
+    <h1>BPB Online Bookshop</h1>
+        <hr />
+        <ul>
+        {% for BPBBook in BPBBooks %}
+        <li>{{BPBBook.title}}</li>
+        {% endfor %}
+        <ul>
+</body>
+
+</html>
+
+
+##################################################################################
+bpbAppIndex.html - Updated Code
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+</head>
+
+<body>
+    <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}" alt="BPB Publications Logo"></div>
+    <h1>BPB Online Bookshop</h1>
+    <hr />
+    <ul>
+        {% for BPBBook in BPBBooks %}
+        <li>{{BPBBook.title}}</li>
+        {% endfor %}
+        <ul>
+</body>
+
+</html>
+
+
+##################################################################################
+bpbAppIndex.html - Updated Code
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="body-container">
+            <div class="items">
+                {% for BPBBook in BPBBooks %}
+                <div class="item">
+                    <div class="book-image-container"></div>
+                    <div class="book-title">{{BPBBook.title}}</div>
+                    <div class="more-details-button"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+static\BPBOnlineBookShopMongoDBApp\style.css
+##################################################################################
+
+.main-container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .header-container {
+    background: #ffffff;
+    height: 200px;
+  }
+
+  .body-container {
+    width: 1200px;
+    background: #fafafa;
+    margin: 20px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 300px;
+    height: 250px;
+    border: 1px;
+    border-style: solid;
+    border-color: blueviolet;
+    margin: 15px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .book-image {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+
+  .book-title {
+    margin-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+
+##################################################################################
+bpbAppIndex.html - Updated
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="body-container">
+            <div class="items">
+                {% for BPBBook in BPBBooks %}
+                <div class="item">
+                    <div class="book-image-container"><img class="book-image"
+                            src="http://localhost/bpb-catalog-app-backend/images/{{BPBBook.coverimage}}" /></div>
+                    <div class="book-title">{{BPBBook.title}}</div>
+                    <div class="more-details-button"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+bpbAppIndex.html - Updated
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="body-container">
+            <div class="items">
+                {% for BPBBook in BPBBooks %}
+                <div class="item">
+                    <div class="book-image-container"><img class="book-image"
+                            src="http://localhost/bpb-catalog-app-backend/images/{{BPBBook.coverimage}}" /></div>
+                    <div class="book-title">{{BPBBook.title}}</div>
+                    <div class="more-details-button"><a href="/book-details">More Details</a></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+static\BPBOnlineBookShopMongoDBApp\style.css
+##################################################################################
+
+
+  .main-container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .header-container {
+    background: #ffffff;
+    height: 200px;
+  }
+
+  .body-container {
+    width: 1200px;
+    background: #fafafa;
+    margin: 20px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 300px;
+    height: 250px;
+    border: 1px;
+    border-style: solid;
+    border-color: blueviolet;
+    margin: 15px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .book-image {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+
+  .book-title {
+    margin-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .more-details-button {
+    margin-top: 20px;
+  }
+
+  .more-details-button>a {
+    background-color: darkorchid;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  .more-details-button>a:hover {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+
+##################################################################################
+BPBOnlineBookShopMongoDBApp/templatetags/ custom-mongodb-tags.py
+##################################################################################
+
+from django import template
+
+register = template.Library()
+
+@register.filter(name='bpbfrontendapp')
+def bpbfrontendapp(obj, attribute):
+    return obj[attribute]
+
+
+##################################################################################
+bpbAppIndex.html - Updated
+##################################################################################
+
+{% load static %}
+{% load custom-mongodb-tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="body-container">
+            <div class="items">
+                {% for BPBBook in BPBBooks %}
+                <div class="item">
+                    <div class="book-image-container"><img class="book-image"
+                            src="http://localhost/bpb-catalog-app-backend/images/{{BPBBook.coverimage}}" /></div>
+                    <div class="book-title">{{BPBBook.title}}</div>
+                    <div class="more-details-button"><a href="/book-details/{{ BPBBook|bpbfrontendapp:'_id' }}">More Details</a></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+urls.py - Updated
+##################################################################################
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.bpbAppIndex, name='BPB-Book-Shop-Home-Page'),
+    path('book-details/<str:bookId>', views.bpbAppBookDetailsIndex, name='BPB-Book-Shop-Book-Details-Page'),
+]
+
+##################################################################################
+views.py - Updated
+##################################################################################
+
+from django.shortcuts import render
+import pymongo # Import PyMongo
+from django.conf import settings # Import the Settings (We will use DB_CONNECTION_STRING from the settings file)
+from bson.objectid import ObjectId # For MongoDB Document Object reference in the PyMongo Functions
+
+# Connect to MongoDB Database from the Connection String Defined in Django Project "settings.py" 
+PyMongoclient = pymongo.MongoClient(settings.DB_CONNECTION_STRING)
+
+# Define the Database
+dbname = PyMongoclient['BPBCatalogDB']
+
+# Use Collection
+collection_name = dbname["BPBCatalogCollection"]
+
+# Create your views here.
+
+def bpbAppIndex(request):
+
+    # Fetch All the Documents from Collection 
+    BPBBooks = collection_name.find({})
+
+    # Pass the Data Object to the Template Output by passing as a parameter using "Key" : "Value" Style
+    return render(request, 'BPBOnlineBookShopMongoDBApp/bpbAppIndex.html', {'BPBBooks' : BPBBooks})
+
+def bpbAppBookDetailsIndex(request, bookId):
+
+    # Fetch Specific Document from Collection with respect to Document or Book ID
+    BPBBookFromId = collection_name.find_one({"_id" : ObjectId(bookId)})
+
+    return render(request, 'BPBOnlineBookShopMongoDBApp/bpbAppBookDetailsIndex.html', {'BPBBookFromId' : BPBBookFromId})
+
+
+##################################################################################
+BPBOnlineBookShopMongoDBApp/bpbAppBookDetailsIndex.html
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Book Details Page - BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="body-container">
+            {{BPBBookFromId}}
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+BPBOnlineBookShopMongoDBApp/bpbAppBookDetailsIndex.html - Updated
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Book Details Page - BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="book-details-body-container">
+            <div class="book-details-book-image-container"><img class="book-details-book-image"
+                    src="http://localhost/bpb-catalog-app-backend/images/{{BPBBookFromId.coverimage}}" /></div>
+            <div class="book-details-book-title">{{BPBBookFromId.title}}</div>
+            <div class="book-details-book-other-details"><b>Description</b> :
+                {{BPBBookFromId.description}}<br /><b>Price</b> : {{BPBBookFromId.price}}</div>
+            <div class="more-details-book-thumbs-up-down-container"><b>Thumbs Up Count</b> :
+                {{BPBBookFromId.thumbsUPCounter}} <b>Thumbs Down Count</b> : {{BPBBookFromId.thumbsDOWNCounter}}</div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+static\BPBOnlineBookShopMongoDBApp\style.css - Updated and Appended Code
+##################################################################################
+
+/* More Details Page CSS Starts Here */
+
+  .book-details-body-container {
+    text-align: center;
+  }
+
+  .book-details-book-image {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-other-details {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+
+##################################################################################
+BPBOnlineBookShopMongoDBApp/bpbAppBookDetailsIndex.html - Updated
+##################################################################################
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Book Details Page - BPB Online Bookshop</title>
+    <link rel="stylesheet" href="{% static 'BPBOnlineBookShopMongoDBApp/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo"><img src="{% static 'BPBOnlineBookShopMongoDBApp/bpb-logo.png' %}"
+                    alt="BPB Publications Logo" /></div>
+            <h1>BPB Online Bookshop</h1>
+            <hr />
+        </div>
+        <div class="book-details-body-container">
+            <div class="book-details-book-image-container"><img class="book-details-book-image"
+                    src="http://localhost/bpb-catalog-app-backend/images/{{BPBBookFromId.coverimage}}" /></div>
+            <div class="book-details-book-title">{{BPBBookFromId.title}}</div>
+            <div class="book-details-book-other-details"><b>Description</b> :
+                {{BPBBookFromId.description}}<br /><b>Price</b> : {{BPBBookFromId.price}}</div>
+            <div class="more-details-book-thumbs-up-down-container">
+                <div class="more-details-book-thumbs-up"><i class="material-icons">thumb_up</i>
+                    {% if BPBBookFromId.thumbsUPCounter %} {{BPBBookFromId.thumbsUPCounter}} {% else %} 0 {% endif %}
+                </div>
+                <div class="more-details-book-thumbs-down"><i class="material-icons">thumb_down</i>
+                    {% if BPBBookFromId.thumbsDOWNCounter %} {{BPBBookFromId.thumbsDOWNCounter}} {% else %} 0 {% endif
+                    %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+##################################################################################
+static\BPBOnlineBookShopMongoDBApp\style.css - Updated
+##################################################################################
+
+  .main-container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .header-container {
+    background: #ffffff;
+    height: 200px;
+  }
+
+  .body-container {
+    width: 1200px;
+    background: #fafafa;
+    margin: 20px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 300px;
+    height: 250px;
+    border: 1px;
+    border-style: solid;
+    border-color: blueviolet;
+    margin: 15px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .book-image {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+
+  .book-title {
+    margin-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .more-details-button {
+    margin-top: 20px;
+  }
+
+  .more-details-button>a {
+    background-color: darkorchid;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  .more-details-button>a:hover {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  /* More Details Page CSS Starts Here */
+
+  .book-details-body-container {
+    text-align: center;
+  }
+
+  .book-details-book-image {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .book-details-book-other-details {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  /* Thumbs Up and Thumbs Down */
+
+  .more-details-book-thumbs-up-down-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .more-details-book-thumbs-up, .more-details-book-thumbs-down {
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+  }
